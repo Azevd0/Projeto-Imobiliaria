@@ -40,7 +40,12 @@ public class AluguelController {
         Aluguel novoAluguel = aluguelService.save(aluguel, id_inq, id_imo);
         return ResponseEntity.status(HttpStatus.CREATED).body(modelMapper.map(novoAluguel,AluguelDto.class));
     }
-    
+     @PatchMapping("/{id}/pagar")
+    public ResponseEntity<AluguelDto> marcarPagamento(@PathVariable Long id) {
+        Aluguel aluguelPago = aluguelService.marcarComoPago(id);
+        return ResponseEntity.ok().body(modelMapper.map(aluguelPago, AluguelDto.class));
+    }
 }
+
 
 
