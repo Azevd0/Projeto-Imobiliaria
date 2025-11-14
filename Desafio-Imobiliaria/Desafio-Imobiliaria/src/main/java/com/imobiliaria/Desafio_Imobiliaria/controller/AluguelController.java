@@ -28,6 +28,19 @@ public class AluguelController {
         Aluguel aluguel = aluguelService.findById(id);
         return ResponseEntity.ok().body(modelMapper.map(aluguel,AluguelDto.class));
     }
-   
+   @GetMapping("/atrasados")
+    public ResponseEntity<List<AluguelDto>> listarAtrasados(){
+        List<Aluguel> atrasos = aluguelService.buscarAtrasados();
+        return ResponseEntity.ok().body(atrasos.stream().map(x -> new AluguelDto(x)).collect(Collectors.toList()));
+    }
+     @PostMapping
+    public ResponseEntity<AluguelDto> save(@RequestParam(value = "inquilino") Long id_inq,
+                                           @RequestParam(value = "imovel") Long id_imo,
+                                           @Valid @RequestBody Aluguel aluguel){
+        Aluguel novoAluguel = aluguelService.save(aluguel, id_inq, id_imo);
+        return ResponseEntity.status(HttpStatus.CREATED).body(modelMapper.map(novoAluguel,AluguelDto.class));
+    }
+    
 }
+
 
