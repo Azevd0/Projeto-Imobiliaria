@@ -17,6 +17,17 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("/alugueis")
 public class AluguelController {
+@Autowired
+    private AluguelService aluguelService;
 
+    @Autowired
+    private ModelMapper modelMapper;
+
+    @GetMapping("/{id}")
+    public ResponseEntity<AluguelDto> findById(@PathVariable Long id){
+        Aluguel aluguel = aluguelService.findById(id);
+        return ResponseEntity.ok().body(modelMapper.map(aluguel,AluguelDto.class));
+    }
    
 }
+
