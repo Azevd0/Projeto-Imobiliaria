@@ -45,7 +45,13 @@ public class AluguelController {
         Aluguel aluguelPago = aluguelService.marcarComoPago(id);
         return ResponseEntity.ok().body(modelMapper.map(aluguelPago, AluguelDto.class));
     }
+     @DeleteMapping("/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Long id){
+        aluguelService.delete(id);
+        return ResponseEntity.noContent().build();
+    }
 }
+
 
 
 
