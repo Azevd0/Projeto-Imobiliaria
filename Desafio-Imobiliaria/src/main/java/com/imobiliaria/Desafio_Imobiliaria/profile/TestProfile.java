@@ -9,8 +9,11 @@ import org.springframework.context.annotation.Profile;
 @Configuration
 @Profile("test")
 public class TestProfile {
-    @Autowired
-    private DbService dbService;
+    private final DbService dbService;
+
+    public TestProfile(DbService dbService) {
+        this.dbService = dbService;
+    }
 
     @Bean
     public CommandLineRunner instanciaDb() {

@@ -10,9 +10,11 @@ import org.springframework.context.annotation.Profile;
 @Configuration
 @Profile("dev")
 public class DevProfile {
+    private final DbService dbService;
 
-    @Autowired
-    private DbService dbService;
+    public DevProfile(DbService dbService) {
+        this.dbService = dbService;
+    }
 
     @Bean
     public CommandLineRunner instanciaDb() {
