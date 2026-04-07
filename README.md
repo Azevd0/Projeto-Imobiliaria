@@ -31,3 +31,15 @@ A aplicação segue a arquitetura em camadas para garantir escalabilidade e manu
 ```bash
 http://localhost:8080/swagger-ui/index.html
 ```
+
+### Acessando a API pelo Docker
+Você pode rodar a versão mais estável diretamente do Docker Hub
+
+### Baixar a versão mais recente
+```bash
+docker pull azevd0/imobiliariapp:1.1
+```
+### Executar o container
+```bash
+docker run -p 8080:8080 azevd0/imobiliariapp:1.1
+```
