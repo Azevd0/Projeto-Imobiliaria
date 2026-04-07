@@ -7,8 +7,6 @@ import com.imobiliaria.Desafio_Imobiliaria.service.InquilinoService;
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,11 +15,13 @@ import java.util.List;
 @RestController
 @RequestMapping("/inquilinos")
 public class InquilinoController {
-    @Autowired
-    private InquilinoService inquilinoService;
+    private final  InquilinoService inquilinoService;
+    private final ModelMapper modelMapper;
 
-    @Autowired
-    private ModelMapper modelMapper;
+    public InquilinoController(InquilinoService inquilinoService, ModelMapper modelMapper) {
+        this.inquilinoService = inquilinoService;
+        this.modelMapper = modelMapper;
+    }
 
     @GetMapping
     @Operation(summary = "Todos os inquilinos", description = "Listar todos os inquilinos")

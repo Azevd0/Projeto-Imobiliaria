@@ -6,24 +6,23 @@ import com.imobiliaria.Desafio_Imobiliaria.service.AluguelService;
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/alugueis")
 public class AluguelController {
+    private final AluguelService aluguelService;
+    private final ModelMapper modelMapper;
 
-    @Autowired
-    private AluguelService aluguelService;
-
-    @Autowired
-    private ModelMapper modelMapper;
+    public AluguelController(AluguelService aluguelService, ModelMapper modelMapper) {
+        this.aluguelService = aluguelService;
+        this.modelMapper = modelMapper;
+    }
 
     @GetMapping("/{id}")
     @Operation(summary = "Busca", description = "Buscar aluguel por id")
@@ -35,7 +34,7 @@ public class AluguelController {
     @Operation(summary = "Pendências", description = "Listar alugueis atrasados")
     public ResponseEntity<List<AluguelDto>> listarAtrasados(){
         List<Aluguel> atrasos = aluguelService.buscarAtrasados();
-        return ResponseEntity.ok().body(atrasos.stream().map(x -> new AluguelDto(x)).collect(Collectors.toList()));
+        return ResponseEntity.ok().body(atrasos.stream().map(AluguelDto::new).collect(Collectors.toList()));
     }
     @PostMapping
     @Operation(summary = "Cadastro", description = "Cadastrar alugueis")

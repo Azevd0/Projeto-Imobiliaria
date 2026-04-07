@@ -1,6 +1,7 @@
 package com.imobiliaria.Desafio_Imobiliaria.dto;
 
 import com.imobiliaria.Desafio_Imobiliaria.models.Aluguel;
+
 import java.util.ArrayList;
 import java.util.List;
 

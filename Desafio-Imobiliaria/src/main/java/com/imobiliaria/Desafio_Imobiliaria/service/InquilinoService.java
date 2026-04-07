@@ -5,8 +5,6 @@ import com.imobiliaria.Desafio_Imobiliaria.dto.InquilinoResponseDto;
 import com.imobiliaria.Desafio_Imobiliaria.exceptions.ObjectNotFoundException;
 import com.imobiliaria.Desafio_Imobiliaria.models.Inquilino;
 import com.imobiliaria.Desafio_Imobiliaria.repository.InquilinoRepository;
-import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
@@ -15,11 +13,11 @@ import java.util.Optional;
 
 @Service
 public class InquilinoService {
-    @Autowired
-    private InquilinoRepository inquilinoRepository;
-    @Autowired
-    private ModelMapper modelMapper;
+    private final InquilinoRepository inquilinoRepository;
 
+    public InquilinoService(InquilinoRepository inquilinoRepository) {
+        this.inquilinoRepository = inquilinoRepository;
+    }
 
     public List<Inquilino> findALl(){
         return inquilinoRepository.findAll();

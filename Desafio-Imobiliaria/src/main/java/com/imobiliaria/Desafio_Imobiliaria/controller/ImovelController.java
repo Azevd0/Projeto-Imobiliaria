@@ -6,7 +6,6 @@ import com.imobiliaria.Desafio_Imobiliaria.service.ImovelService;
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,10 +13,13 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/imoveis")
 public class ImovelController {
-    @Autowired
-    private ImovelService imovelService;
-    @Autowired
-    private ModelMapper modelMapper;
+    private final ImovelService imovelService;
+    private final ModelMapper modelMapper;
+
+    public ImovelController(ImovelService imovelService, ModelMapper modelMapper) {
+        this.imovelService = imovelService;
+        this.modelMapper = modelMapper;
+    }
 
     @GetMapping("/{id}")
     @Operation(summary = "Busca por id", description = "Buscar imóvel pelo id")

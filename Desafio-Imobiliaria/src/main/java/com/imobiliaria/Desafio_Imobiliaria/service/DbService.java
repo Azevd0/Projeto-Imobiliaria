@@ -6,7 +6,6 @@ import com.imobiliaria.Desafio_Imobiliaria.models.Inquilino;
 import com.imobiliaria.Desafio_Imobiliaria.repository.AluguelRepository;
 import com.imobiliaria.Desafio_Imobiliaria.repository.ImovelRepository;
 import com.imobiliaria.Desafio_Imobiliaria.repository.InquilinoRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -14,15 +13,15 @@ import java.util.Arrays;
 
 @Service
 public class DbService {
+    private final InquilinoRepository inquilinoRepository;
+    private final AluguelRepository aluguelRepository;
+    private final ImovelRepository imovelRepository;
 
-    @Autowired
-    private InquilinoRepository inquilinoRepository;
-
-    @Autowired
-    private AluguelRepository aluguelRepository;
-
-    @Autowired
-    private ImovelRepository imovelRepository;
+    public DbService(InquilinoRepository inquilinoRepository, AluguelRepository aluguelRepository, ImovelRepository imovelRepository) {
+        this.inquilinoRepository = inquilinoRepository;
+        this.aluguelRepository = aluguelRepository;
+        this.imovelRepository = imovelRepository;
+    }
 
     public void instanciarDb(){
         Inquilino i1 = new Inquilino(null, "Alberto Costa", "alberto44@gmail.com", "@9876");

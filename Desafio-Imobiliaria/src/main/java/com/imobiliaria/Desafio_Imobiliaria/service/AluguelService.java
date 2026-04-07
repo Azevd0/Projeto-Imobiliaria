@@ -5,7 +5,6 @@ import com.imobiliaria.Desafio_Imobiliaria.models.Aluguel;
 import com.imobiliaria.Desafio_Imobiliaria.models.Imovel;
 import com.imobiliaria.Desafio_Imobiliaria.models.Inquilino;
 import com.imobiliaria.Desafio_Imobiliaria.repository.AluguelRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -14,13 +13,15 @@ import java.util.Optional;
 
 @Service
 public class AluguelService {
+    private final AluguelRepository aluguelRepository;
+    private final InquilinoService inquilinoService;
+    private final ImovelService imovelService;
 
-    @Autowired
-    private AluguelRepository aluguelRepository;
-    @Autowired
-    private InquilinoService inquilinoService;
-    @Autowired
-    private ImovelService imovelService;
+    public AluguelService(AluguelRepository aluguelRepository, InquilinoService inquilinoService, ImovelService imovelService) {
+        this.aluguelRepository = aluguelRepository;
+        this.inquilinoService = inquilinoService;
+        this.imovelService = imovelService;
+    }
 
     public Aluguel findById(Long id){
         Optional<Aluguel> aluguel = aluguelRepository.findById(id);

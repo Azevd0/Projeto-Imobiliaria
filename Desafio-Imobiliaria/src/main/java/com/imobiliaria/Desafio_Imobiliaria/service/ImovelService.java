@@ -3,7 +3,6 @@ package com.imobiliaria.Desafio_Imobiliaria.service;
 import com.imobiliaria.Desafio_Imobiliaria.exceptions.ObjectNotFoundException;
 import com.imobiliaria.Desafio_Imobiliaria.models.Imovel;
 import com.imobiliaria.Desafio_Imobiliaria.repository.ImovelRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
@@ -12,8 +11,11 @@ import java.util.Optional;
 
 @Service
 public class ImovelService {
-    @Autowired
-    private ImovelRepository imovelRepository;
+    private final ImovelRepository imovelRepository;
+
+    public ImovelService(ImovelRepository imovelRepository) {
+        this.imovelRepository = imovelRepository;
+    }
 
     public List<Imovel> findAll(){
         return imovelRepository.findAll();
