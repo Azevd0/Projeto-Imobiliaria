@@ -22,20 +22,20 @@ public class ImovelController {
     }
 
     @GetMapping("/{id}")
-    @Operation(summary = "Busca por id", description = "Buscar imóvel pelo id")
+    @Operation(summary = "Buscar imóvel pelo id")
     public ResponseEntity<ImovelDto> findById(@PathVariable Long id){
         Imovel imovel = imovelService.findById(id);
         return ResponseEntity.ok().body(modelMapper.map(imovel, ImovelDto.class));
     }
     @PostMapping
-    @Operation(summary = "Cadastro", description = "Cadastrar imóvel")
+    @Operation(summary = "Cadastrar imóvel")
     public ResponseEntity<ImovelDto> save(@Valid @RequestBody ImovelDto imovelDto){
         Imovel imovel = modelMapper.map(imovelDto, Imovel.class);
         Imovel novoImovel = imovelService.save(imovel);
         return ResponseEntity.status(HttpStatus.CREATED).body(modelMapper.map(novoImovel, ImovelDto.class));
     }
     @DeleteMapping("/{id}")
-    @Operation(summary = "Remoção", description = "Remover imóvel por id")
+    @Operation(summary = "Remover imóvel por id")
     public ResponseEntity<Void> delete(@PathVariable Long id){
         imovelService.delete(id);
         return ResponseEntity.noContent().build();

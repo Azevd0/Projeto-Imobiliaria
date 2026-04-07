@@ -24,25 +24,25 @@ public class InquilinoController {
     }
 
     @GetMapping
-    @Operation(summary = "Todos os inquilinos", description = "Listar todos os inquilinos")
+    @Operation(summary = "Listar todos os inquilinos")
     public ResponseEntity<List<InquilinoResponseDto>> listAll(){
         List<InquilinoResponseDto> inquilinoList = inquilinoService.findALl()
                 .stream().map(InquilinoResponseDto::new).toList();
         return ResponseEntity.ok(inquilinoList);
     }
     @GetMapping("/{nome}")
-    @Operation(summary = "Busca por nome", description = "Buscar inquilino pelo nome")
+    @Operation(summary = "Buscar inquilino pelo nome")
     public ResponseEntity<InquilinoResponseDto> findByNome(@PathVariable String nome){
         Inquilino inquilino = inquilinoService.findByName(nome);
         return  ResponseEntity.ok().body(modelMapper.map(inquilino, InquilinoResponseDto.class));
     }
     @PostMapping
-    @Operation(summary = "Cadastro", description = "Cadastrar inquilino")
+    @Operation(summary = "Cadastrar inquilino")
     public ResponseEntity<InquilinoResponseDto> save(@Valid @RequestBody InquilinoRequestDto inquilinoDto){
         return ResponseEntity.ok(inquilinoService.save(inquilinoDto));
     }
     @DeleteMapping("/{id}")
-    @Operation(summary = "Remoção", description = "Deletar inquilino pelo id")
+    @Operation(summary = "Deletar inquilino pelo id")
     public ResponseEntity<Void> delete(@PathVariable Long id){
         inquilinoService.delete(id);
         return ResponseEntity.noContent().build();
