@@ -24,9 +24,6 @@ public class Inquilino {
     @Email(message = "Formato de e-mail inválido.")
     private String email;
 
-    @NotNull(message = "O inquilino deve ter uma senha.")
-    private String senha;
-
     @JsonIgnore
     @OneToMany(mappedBy = "inquilino")
     private List<Aluguel> aluguel = new ArrayList<>();
@@ -36,13 +33,12 @@ public class Inquilino {
     public Inquilino(InquilinoRequestDto dto) {
         this.nome = dto.nome();
         this.email = dto.email();
-        this.senha = dto.senha();
     }
-    public Inquilino(Long id, String nome, String email, String senha) {
+    public Inquilino(Long id, String nome, String email) {
         this.id = id;
         this.nome = nome;
         this.email = email;
-        this.senha = senha;
+
     }
 
     public Long getId() {
@@ -67,14 +63,6 @@ public class Inquilino {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getSenha() {
-        return senha;
-    }
-
-    public void setSenha(String senha) {
-        this.senha = senha;
     }
 
     public List<Aluguel> getAluguel() {

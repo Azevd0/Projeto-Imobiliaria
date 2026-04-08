@@ -24,11 +24,11 @@ public class DbService {
     }
 
     public void instanciarDb(){
-        Inquilino i1 = new Inquilino(null, "Alberto Costa", "alberto44@gmail.com", "@9876");
-        Inquilino i2 = new Inquilino(null, "Joana Vila", "joanavil@email.com", "$9876");
-        Inquilino i3 = new Inquilino(null, "José Silva", "jose87@gmail.com","#9876");
-        Inquilino i4 = new Inquilino(null, "Adilson Oliveira", "oliveradilson@hotmail.com", "%9876");
-        Inquilino i5 = new Inquilino(null, "Jéssica Eduarda", "jessicanuns98@gmail.com", "&9876");
+        Inquilino i1 = new Inquilino(null, "Alberto Costa", "alberto44@gmail.com");
+        Inquilino i2 = new Inquilino(null, "Joana Vila", "joanavil@email.com");
+        Inquilino i3 = new Inquilino(null, "José Silva", "jose87@gmail.com");
+        Inquilino i4 = new Inquilino(null, "Adilson Oliveira", "oliveradilson@hotmail.com");
+        Inquilino i5 = new Inquilino(null, "Jéssica Eduarda", "jessicanuns98@gmail.com");
 
         Imovel imovel1 = new Imovel(null,"Apartamento 201", "Rua da Liberdade, 111");
         Imovel imovel2 = new Imovel(null,"Duplex", "Rua do Futuro, 23");
