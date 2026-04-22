@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.imobiliaria</groupId>
-	<artifactId>Desafio-Imobiliaria</artifactId>
+	<artifactId>desafio-imobiliaria</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Desafio-Imobiliaria</name>
+	<name>desafio-imobiliaria:latest</name>
 	<description>Demo project for Spring Boot</description>
 	<url/>
 	<licenses>
@@ -30,6 +30,7 @@
 		<java.version>17</java.version>
 	</properties>
 	<dependencies>
+
         <dependency>
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
@@ -77,8 +78,11 @@
 	</dependencies>
 
 	<build>
-        <finalName>app</finalName>
 		<plugins>
+            <plugin>
+                <groupId>org.graalvm.buildtools</groupId>
+                <artifactId>native-maven-plugin</artifactId>
+            </plugin>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
@@ -92,7 +96,17 @@
             </executions>
 
                 <configuration>
-                    <mainClass>com.imobiliaria.Desafio_Imobiliaria.DesafioImobiliariaApplication</mainClass>                </configuration>
+                    <image>
+                        <builder>paketobuildpacks/builder-jammy-tiny:latest</builder>
+                        <runImage>paketobuildpacks/run-jammy-tiny:latest</runImage>
+                        <name>desafio-imobiliaria:latest</name>
+                        <pullPolicy>IF_NOT_PRESENT</pullPolicy>
+                    </image>
+                    <docker>
+                        <host>tcp://127.0.0.1:2375</host>
+                        <tlsVerify>false</tlsVerify>
+                    </docker>
+                </configuration>
             </plugin>
 		</plugins>
 	</build>
