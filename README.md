@@ -63,3 +63,7 @@ Nas vezes subsequentes que for rodar a aplicação use o comando sem --build, us
 ```bash
 docker compose up -d
 ```
+Para ver o tempo de startup da aplicação, abra os logs com:
+```bash
+docker compose logs api
+```
