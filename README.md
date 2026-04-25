@@ -4,7 +4,7 @@
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)](https://www.postgresql.org/)
 [![Docker](https://img.shields.io/badge/Docker-Container-blue?style=for-the-badge&logo=docker)](https://www.docker.com/)
 
-API RESTful desenvolvida para a gestão completa de inquilinos, imóveis e contratos de aluguel. O projeto foca em **Clean Code**, alta performance com otimização de persistência e documentação interativa.
+API RESTful desenvolvida para a gestão de inquilinos, imóveis e contratos de aluguel. O projeto segue conceitos de **Clean Code**, com otimização de persistência e documentação interativa, além de também contar com execução em ambiente de contêiner.
 
 ---
 
@@ -16,7 +16,8 @@ API RESTful desenvolvida para a gestão completa de inquilinos, imóveis e contr
 * **Banco de Dados:** **PostgreSQL** (Produção) e H2 (Desenvolvimento/Testes)
 * **Documentação:** SpringDoc OpenAPI (Swagger UI)
 * **Mapeamento:** ModelMapper & DTOs
-* **Build:** Maven
+* **Deploy:** Multi-stage Build, Docker Compose
+* **Build:** Maven, GraalVM
 
 ---
 
